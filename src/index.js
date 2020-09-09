@@ -5,7 +5,7 @@ import * as serviceWorker from "./serviceWorker";
 
 // import redux
 import { Provider } from "react-redux";
-import createStore from "./reducs/Store/store";
+import createStore from "./redux/Store/store";
 
 //import react-router
 import { ConnectedRouter } from "connected-react-router";
