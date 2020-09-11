@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Todos from "./Todos";
+import TodoList from "./TodoList";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addTodoAction } from "../redux/todos/actions";
@@ -49,7 +49,7 @@ const TodoApp = () => {
       <h1>Todo-App</h1>
       <input type="text" placeholder="タスクの追加" ref={inputEl}></input>
       <button onClick={() => addTodo()}>タスクの追加</button>
-      <Todos />
+      <TodoList />
     </section>
   );
 };

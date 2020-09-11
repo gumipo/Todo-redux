@@ -9,11 +9,14 @@ import {
 } from "../redux/todos/actions";
 import { useEffect } from "react";
 
-const Todos = () => {
-  const dispatch = useDispatch();
+import TodoItem from "./TodoItem";
+
+const TodoList = () => {
   const selector = useSelector((state) => state);
   const todoList = getTodos(selector);
   const completeTodoList = getCompleteTodos(selector);
+
+  const dispatch = useDispatch();
 
   const [completeTodoIndex, setCompleteTodoIndex] = useState(0);
 
@@ -52,6 +55,20 @@ const Todos = () => {
     }
   };
 
+  const editTodo = (index, title) => {
+    todoList[index] = {
+      title: title,
+    };
+    dispatch(addTodoAction(todoList));
+  };
+
+  const editCompleteTodo = (index, title) => {
+    completeTodoList[index] = {
+      title: title,
+    };
+    dispatch(addCompleteTodoAction(completeTodoList));
+  };
+
   useEffect(() => {
     setCompleteTodoIndex(completeTodoList.length);
   }, [completeTodoList.length]);
@@ -61,31 +78,36 @@ const Todos = () => {
       <h2>未完了</h2>
       {todoList.length > 0 ? (
         todoList.map((todo, i) => (
-          <div key={i} index={i}>
-            <p>{todo.title}</p>
-
-            <button>編集</button>
-            <button onClick={() => deleteTodo(i)}>削除</button>
-            <button onClick={() => addCompleteTodo(i)}>完了</button>
-          </div>
+          <TodoItem
+            todoList={todoList}
+            key={i}
+            index={i}
+            todo={todo}
+            addCompleteTodo={addCompleteTodo}
+            deleteTodo={deleteTodo}
+            editTodo={editTodo}
+          />
         ))
       ) : (
-        <p>やることみつけろ</p>
+        <p>まだないよ</p>
       )}
-      <h2>完了</h2>
+      　 <h2>完了</h2>
       {completeTodoList.length > 0 ? (
-        completeTodoList.map((todo, i) => (
-          <div key={i} index={i}>
-            <p>{todo.title}</p>
-            <button>編集</button>
-            <button onClick={() => deleteCompleteTodo(i)}>削除</button>
-            <button onClick={() => reversTodo(i)}>戻す</button>
-          </div>
+        completeTodoList.map((completeTodo, i) => (
+          <TodoItem
+            completeTodoList={completeTodoList}
+            key={i}
+            index={i}
+            completeTodo={completeTodo}
+            reversTodo={reversTodo}
+            deleteCompleteTodo={deleteCompleteTodo}
+            editCompleteTodo={editCompleteTodo}
+          />
         ))
       ) : (
-        <p>お前はまだなにも完了できていない</p>
+        <p>まだないよ</p>
       )}
     </div>
   );
 };
-export default Todos;
+export default TodoList;
