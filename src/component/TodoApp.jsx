@@ -6,6 +6,8 @@ import { addTodoAction } from "../redux/todos/actions";
 import { getTodos } from "../redux/todos/selector";
 import { useEffect } from "react";
 
+import styled from "styled-components";
+
 const TodoApp = () => {
   const inputEl = useRef(null);
   const dispatch = useDispatch();
@@ -45,12 +47,22 @@ const TodoApp = () => {
   }, [todoList.length]);
 
   return (
-    <section>
-      <h1>Todo-App</h1>
+    <StyleTodo>
+      <Title>Todo-App</Title>
       <input type="text" placeholder="タスクの追加" ref={inputEl}></input>
       <button onClick={() => addTodo()}>タスクの追加</button>
       <TodoList />
-    </section>
+    </StyleTodo>
   );
 };
 export default TodoApp;
+
+const Title = styled.h1`
+  color :red,
+  background-color: pink;
+`;
+
+const StyleTodo = styled.div`
+  width :300px,
+  heght:500px,
+  margin: 0 auto  ;`;
