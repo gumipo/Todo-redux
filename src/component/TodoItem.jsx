@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRef } from "react";
+import styled from "styled-components";
 
 const TodoItem = ({
   todo,
@@ -17,39 +18,52 @@ const TodoItem = ({
   const inputEl = useRef(null);
 
   return (
-    <div>
+    <>
       {!isEdit ? (
-        <div>
-          {todo ? todo.title : completeTodo.title}
-          {todo ? (
-            <button onClick={() => setIsEdit(!isEdit)}>編集</button>
-          ) : (
-            <button onClick={() => setIsEdit(!isEdit)}>編集</button>
-          )}
+        <div className="todo__item-flex">
+          <div style={{ fontSize: 25 }}>
+            {todo ? todo.title : completeTodo.title}
+          </div>
+          <ButtonArea>
+            {todo ? (
+              <button onClick={() => setIsEdit(!isEdit)}>編集</button>
+            ) : (
+              <button onClick={() => setIsEdit(!isEdit)}>編集</button>
+            )}
 
-          {todo ? (
-            <button onClick={() => deleteTodo(index)}>削除</button>
-          ) : (
-            <button onClick={() => deleteCompleteTodo(index)}>削除</button>
-          )}
+            {todo ? (
+              <button className="-secondary" onClick={() => deleteTodo(index)}>
+                削除
+              </button>
+            ) : (
+              <button
+                className="-secondary"
+                onClick={() => deleteCompleteTodo(index)}
+              >
+                削除
+              </button>
+            )}
 
-          {todo ? (
-            <button
-              onClick={() => {
-                addCompleteTodo(index);
-              }}
-            >
-              完了
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                reversTodo(index);
-              }}
-            >
-              戻す
-            </button>
-          )}
+            {todo ? (
+              <button
+                className="-primary"
+                onClick={() => {
+                  addCompleteTodo(index);
+                }}
+              >
+                完了
+              </button>
+            ) : (
+              <button
+                className="-yellowgreen"
+                onClick={() => {
+                  reversTodo(index);
+                }}
+              >
+                戻す
+              </button>
+            )}
+          </ButtonArea>
         </div>
       ) : (
         <div>
@@ -86,7 +100,13 @@ const TodoItem = ({
           )}
         </div>
       )}
-    </div>
+      <div className="module-spacer--small" />
+    </>
   );
 };
 export default TodoItem;
+
+const ButtonArea = styled.div`
+  width: 300px;
+  display: flex;
+`;

@@ -47,22 +47,52 @@ const TodoApp = () => {
   }, [todoList.length]);
 
   return (
-    <StyleTodo>
-      <Title>Todo-App</Title>
-      <input type="text" placeholder="タスクの追加" ref={inputEl}></input>
-      <button onClick={() => addTodo()}>タスクの追加</button>
-      <TodoList />
-    </StyleTodo>
+    <>
+      <TodoHeader>
+        <TodoHeaderInner>
+          <TodoHeaderTitle>Todo-App</TodoHeaderTitle>
+        </TodoHeaderInner>
+      </TodoHeader>
+      <div className="module-spacer--small" />
+      <TodoBox>
+        <input type="text" placeholder="タイトル書いてね" ref={inputEl}></input>
+        <button className="-skyblue" onClick={() => addTodo()}>
+          タスクの追加
+        </button>
+        <div className="module-spacer--small" />
+        <TodoList />
+      </TodoBox>
+    </>
   );
 };
 export default TodoApp;
 
-const Title = styled.h1`
-  color :red,
-  background-color: pink;
+const TodoHeader = styled.div`
+  height: 200px;
+  background-color: skyblue;
+  line-height: 200px;
 `;
 
-const StyleTodo = styled.div`
-  width :300px,
-  heght:500px,
-  margin: 0 auto  ;`;
+const TodoHeaderInner = styled.div`
+  width: 800px;
+  margin: 0 auto;
+`;
+
+const TodoHeaderTitle = styled.h1`
+  font-size: 50px;
+  color: pink;
+`;
+
+const TodoBox = styled.section`
+  width: 800px;
+  height: 1000px;
+  margin: 0 auto;
+
+  input {
+    width: 600px;
+    height: 50px;
+    font-size: 20px;
+    background-color: white;
+    margin-right: 20px;
+  }
+`;
