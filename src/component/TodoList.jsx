@@ -75,7 +75,8 @@ const TodoList = () => {
 
   return (
     <div>
-      <h2>未完了</h2>
+      <h2 style={{ fontSize: 30 }}>未完了</h2>
+      <div className="module-spacer--small"></div>
       {todoList.length > 0 ? (
         todoList.map((todo, i) => (
           <TodoItem
@@ -91,7 +92,9 @@ const TodoList = () => {
       ) : (
         <p>まだないよ</p>
       )}
-      　 <h2>完了</h2>
+      <div className="module-spacer--small"></div>　
+      <h2 style={{ fontSize: 30 }}>完了</h2>
+      <div className="module-spacer--small"></div>
       {completeTodoList.length > 0 ? (
         completeTodoList.map((completeTodo, i) => (
           <TodoItem
