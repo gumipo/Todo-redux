@@ -18,7 +18,7 @@ const TodoItem = ({
   const inputEl = useRef(null);
 
   return (
-    <div>
+    <>
       {!isEdit ? (
         <div className="todo__item-flex">
           <div style={{ fontSize: 25 }}>
@@ -100,8 +100,8 @@ const TodoItem = ({
           )}
         </div>
       )}
-      <div className="module-spacer--small"></div>
-    </div>
+      <div className="module-spacer--small" />
+    </>
   );
 };
 export default TodoItem;

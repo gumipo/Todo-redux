@@ -47,39 +47,40 @@ const TodoApp = () => {
   }, [todoList.length]);
 
   return (
-    <div>
+    <>
       <TodoHeader>
-        <div className="inner">
-          <h1>Todo-App</h1>
-        </div>
+        <TodoHeaderInner>
+          <TodoHeaderTitle>Todo-App</TodoHeaderTitle>
+        </TodoHeaderInner>
       </TodoHeader>
-      <div className="module-spacer--small"></div>
+      <div className="module-spacer--small" />
       <TodoBox>
         <input type="text" placeholder="タイトル書いてね" ref={inputEl}></input>
         <button className="-skyblue" onClick={() => addTodo()}>
           タスクの追加
         </button>
-        <div className="module-spacer--small"></div>
+        <div className="module-spacer--small" />
         <TodoList />
       </TodoBox>
-    </div>
+    </>
   );
 };
 export default TodoApp;
 
 const TodoHeader = styled.div`
-  .inner {
-    width: 800px;
-    margin: 0 auto;
-  }
-  h1 {
-    font-size: 50px;
-    color: pink;
-  }
-
   height: 200px;
   background-color: skyblue;
   line-height: 200px;
+`;
+
+const TodoHeaderInner = styled.div`
+  width: 800px;
+  margin: 0 auto;
+`;
+
+const TodoHeaderTitle = styled.h1`
+  font-size: 50px;
+  color: pink;
 `;
 
 const TodoBox = styled.section`

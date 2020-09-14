@@ -74,7 +74,7 @@ const TodoList = () => {
   }, [completeTodoList.length]);
 
   return (
-    <div>
+    <>
       <h2 style={{ fontSize: 30 }}>未完了</h2>
       <div className="module-spacer--small"></div>
       {todoList.length > 0 ? (
@@ -110,7 +110,7 @@ const TodoList = () => {
       ) : (
         <p>まだないよ</p>
       )}
-    </div>
+    </>
   );
 };
 export default TodoList;
