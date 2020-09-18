@@ -1,0 +1,40 @@
+/*********** Module Spacer ***********/
+
+.module-spacer--medium {
+  height: 100px;
+}
+.module-spacer--small {
+  height: 30px;
+}
+
+/*********** todoitem ***********/
+
+.todo__item-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo__item-flex button {
+  width: 100px;
+}
+
+.-skyblue {
+  background-color: skyblue;
+}
+
+.-secondary {
+  background-color: rgba(255, 0, 0, 0.555);
+}
+
+.-primary {
+  background-color: rgba(0, 132, 255, 0.973);
+}
+
+.-yellowgreen {
+  background-color: rgba(153, 205, 50, 0.801);
+}
+
+.todo__inputbox-isedit {
+  border: solid 3px red;
+}
